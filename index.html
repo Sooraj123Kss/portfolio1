@@ -38,17 +38,30 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background-image: url('https://pixabay.com/get/g2f22780a59573665eab135710e2c64ecbe92542f76b87cdd785a2fdac10bf48f0ef7a1d0ae248fe3706cb96c8792935b_1920.jpg');
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+            background-image: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1650&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
             color: var(--text-accent);
+        }
+
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.82;
+            filter: brightness(0.85);
         }
 
         .hero::before {
@@ -543,42 +556,62 @@
 
         /* Contact Form */
         .contact-form {
-            max-width: 600px;
+            max-width: 640px;
             margin: 0 auto;
             background-color: var(--bg-tertiary);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            backdrop-filter: blur(10px);
+            padding: 36px 32px;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            backdrop-filter: blur(14px);
             border: 1px solid var(--border-color);
+            display: grid;
+            gap: 22px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 0;
+            display: grid;
+            gap: 10px;
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: var(--text-accent);
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 0.02em;
         }
 
         input, textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px 16px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 12px;
             background-color: var(--bg-secondary);
             color: var(--text-primary);
-            font-size: 16px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            box-sizing: border-box;
+            min-height: 52px;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 1;
         }
 
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 5px var(--accent-color);
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.18);
+            transform: translateY(-1px);
         }
 
         .submit-btn {
@@ -769,7 +802,7 @@
 
             /* Contact Form */
             .contact-form {
-                padding: 20px;
+                padding: 24px;
                 max-width: 100%;
             }
 
@@ -778,13 +811,13 @@
             }
 
             input, textarea {
-                font-size: 16px;
-                padding: 10px;
+                font-size: 1rem;
+                padding: 14px 14px;
             }
 
             .submit-btn {
                 width: 100%;
-                padding: 12px 20px;
+                padding: 14px 20px;
                 font-size: 1rem;
             }
 
@@ -1020,6 +1053,9 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video" poster="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1650&q=80">
+            <source src="https://videos.pexels.com/videos/856034/download/pexels-artem-podrez-856034.mp4?auto=compress&cs=tinysrgb&dpr=2&h=720&w=1280" type="video/mp4">
+        </video>
         <div class="hero-content">
             <h1>Welcome to My Portfolio</h1>
             <p>Discover my journey in modern web development, featuring cutting-edge technologies and innovative solutions.</p>
