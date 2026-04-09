@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Portfolio | [Your Name]</title>
+    <style>
+        /* --- THEME COLORS --- */
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #181818;
+            --bg-tertiary: #1f1f1f;
+            --text-primary: #e0e0e0;
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --text-accent: #ffffff;
+            --border-color: #333333;
+            --accent-color: #4CAF50;
+            --accent-hover: #45a049;
+            --accent-secondary: #2196F3;
+            --accent-tertiary: #FF9800;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        /* --- CSS STYLES --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-image: url('https://pixabay.com/get/g2f22780a59573665eab135710e2c64ecbe92542f76b87cdd785a2fdac10bf48f0ef7a1d0ae248fe3706cb96c8792935b_1920.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: var(--text-accent);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+
+        .hero .cta-button {
+            background: var(--gradient-secondary);
+            color: var(--text-accent);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeInUp 2s ease-out 1s both;
+            border: none;
+        }
+
+        .hero .cta-button:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Scroll-triggered animation classes */
+        .animate-fadeInUp {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-fadeInUp.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-slideInLeft {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-slideInLeft.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-slideInRight {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-slideInRight.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-zoomIn {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-zoomIn.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .animate-bounceIn {
+            opacity: 0;
+            transform: scale(0.3);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-bounceIn.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- BASIC STYLES --- */
+        h1, h2, h3 {
+            color: var(--text-accent);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: var(--text-accent);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gradient-secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: fadeInUp 1s ease-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            order: -1;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            order: 1;
+        }
+
+        main {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px; /* Account for fixed header */
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        section:nth-child(1) { /* about */ }
+        section:nth-child(2) { /* skills */ }
+        section:nth-child(3) { /* projects */ }
+        section:nth-child(4) { /* contact */ }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 0;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .project-card:hover .project-thumbnail img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        .project-card-content {
+            padding: 20px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 0 20px rgba(76, 175, 80, 0.3);
+            border-color: var(--accent-secondary);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover h3 {
+            color: var(--accent-hover);
+            animation: pulse 0.6s ease-in-out;
+        }
+
+        .project-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-card a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Profile Photo Section */
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px var(--shadow-color), 0 0 30px rgba(76, 175, 80, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px var(--shadow-color), 0 0 40px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Achievement Cards Grid */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .achievement-card {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transition: left 0.3s ease;
+        }
+
+        .achievement-card:hover::before {
+            left: 0;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 10px 30px var(--shadow-color), 0 0 20px rgba(33, 150, 243, 0.2);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.2);
+        }
+
+        .achievement-card h3 {
+            margin: 15px 0 10px 0;
+            color: var(--accent-secondary);
+            font-size: 1.3rem;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .achievement-meta {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Skill Badge Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid var(--accent-secondary);
+            border-radius: 25px;
+            padding: 12px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-badge:hover {
+            background: var(--gradient-primary);
+            color: var(--text-accent);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-tertiary);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-accent);
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--text-accent);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--gradient-secondary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive adjustments - Tablet & Mobile */
+        @media (max-width: 768px) {
+            /* Header */
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                order: 0;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                order: 0;
+            }
+
+            nav a {
+                font-size: 1rem;
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 80vh;
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-content {
+                max-width: 90%;
+            }
+
+            .hero .cta-button {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+
+            /* Profile Photo */
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* Main Content */
+            main {
+                padding-top: 150px;
+                padding: 20px 5%;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            section p {
+                font-size: 0.95rem;
+            }
+
+            /* Skills Section */
+            .skills-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .skill-badge {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                border-radius: 20px;
+            }
+
+            /* Achievement Grid */
+            .achievement-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .achievement-card {
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .achievement-icon {
+                font-size: 2rem;
+            }
+
+            .achievement-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .achievement-card p {
+                font-size: 0.9rem;
+            }
+
+            /* Project Grid */
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-thumbnail {
+                height: 150px;
+            }
+
+            .project-card-content {
+                padding: 15px;
+            }
+
+            .project-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-card p {
+                font-size: 0.9rem;
+            }
+
+            /* Contact Form */
+            .contact-form {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            input, textarea {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            /* Lists */
+            ul {
+                padding-left: 20px;
+            }
+
+            ul li {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Extra Small Mobile Devices */
+        @media (max-width: 480px) {
+            header {
+                padding: 12px 4%;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-content {
+                max-width: 95%;
+                padding: 15px;
+            }
+
+            .hero .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Profile Photo */
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+                border: 3px solid var(--accent-color);
+            }
+
+            /* Main Content */
+            main {
+                padding: 15px 4%;
+                padding-top: 120px;
+            }
+
+            section {
+                margin-bottom: 30px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            section p {
+                font-size: 0.9rem;
+            }
+
+            /* Skills Container */
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .skill-badge {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            /* Achievement Cards */
+            .achievement-grid {
+                gap: 12px;
+            }
+
+            .achievement-card {
+                padding: 15px;
+            }
+
+            .achievement-icon {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+            .achievement-card h3 {
+                font-size: 1rem;
+                margin: 10px 0 8px 0;
+            }
+
+            .achievement-card p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            /* Project Cards */
+            .project-grid {
+                gap: 15px;
+            }
+
+            .project-thumbnail {
+                height: 120px;
+            }
+
+            .project-card-content {
+                padding: 12px;
+            }
+
+            .project-card h3 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .project-card p {
+                font-size: 0.85rem;
+            }
+
+            /* Contact Form */
+            .contact-form {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            input, textarea {
+                font-size: 16px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            label {
+                font-size: 0.95rem;
+                margin-bottom: 4px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            address {
+                font-size: 0.9rem;
+            }
+
+            address a {
+                word-break: break-word;
+            }
+
+            /* Footer */
+            footer {
+                padding: 15px;
+                font-size: 0.85rem;
+            }
+
+            /* Lists */
+            ul {
+                padding-left: 18px;
+                margin: 10px 0;
+            }
+
+            ul li {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <h1>K S Sooraj</h1>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Discover my journey in modern web development, featuring cutting-edge technologies and innovative solutions.</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- PROFILE PHOTO SECTION -->
+        <section class="profile-section">
+            <div class="profile-photo">
+                <img src="profile.png" alt="Profile Photo">
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="animate-fadeInUp">
+            <h2>About Me</h2>
+            <p>Hello! I am a passionate UI/Ux Designer and Frontend Developer with a strong focus on creating visually stunning and user-friendly digital experiences.</p>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="animate-slideInRight">
+            <h2>Skills & Expertise</h2>
+            <p>I bring a diverse skill set to every project, blending technical proficiency with creative thinking:</p>
+            <ul>
+                <li><strong>Frontend:</strong> HTML, CSS (Sass/Tailwind), JavaScript (React/Vue)</li>
+                <li><strong>Design:</strong> Figma, Adobe XD, UI/UX Principles</li>
+            </ul>
+            <div class="skills-container">
+                <div class="skill-badge">UI/UX Design</div>
+                <div class="skill-badge">Web Development</div>
+                <div class="skill-badge">Branding</div>
+                <div class="skill-badge">Prototyping</div>
+                <div class="skill-badge">User Research</div>
+                <div class="skill-badge">Responsive Design</div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS SECTION -->
+        <section id="achievements" class="animate-slideInLeft">
+            <h2>Achievements & Recognition</h2>
+            <p>Notable accomplishments and recognition in design and development:</p>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3>Published Author</h3>
+                    <p>published author with experience in Kindle direct publishing</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Certification</h3>
+                    <p>adobe Design Certificate & ibm Professional Certification</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">✍️</div>
+                    <h3>Technical Writer</h3>
+                    <p>has own technical writing blog and literature blog</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="animate-zoomIn">
+            <h2>Featured Projects</h2>
+            <p>A showcase of my recent work, demonstrating my ability to execute complex concepts from idea to deployment.</p>
+            
+            <div class="project-grid">
+                
+                <!-- PROJECT CARD 1 -->
+                <div class="project-card animate-slideInLeft">
+                    <div class="project-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Brand Identity Design">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>A minimalist approach to brand identity from a Ui perspective.</h3>
+                        <p>A first project focused on creating a modern and minimalistic brand identity for a startup mock.</p>
+                        <a href="https://www.behance.net/gallery/236061255/FitTea-Tea-that-work-as-much-as-you-do" target="_blank" style="color: #4CAF50; text-decoration: none;">View Live</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT CARD 2 -->
+                <div class="project-card animate-slideInLeft">
+                    <div class="project-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&h=400&fit=crop" alt="E-Commerce Application">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Interactive E-Commerce Application</h3>
+                        <p>Crafting an engaging "cover" with bold visuals and deep, intuitive navigation that keeps users turning the pages..</p>
+                        <a href="https://sooraj123kss.github.io/soorajweb/ecom.html" target="_blank" style="color: #4CAF50; text-decoration: none;">View Live</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT CARD 3 -->
+                <div class="project-card animate-slideInLeft">
+                    <div class="project-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Premia App Design">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Premia app design figma</h3>
+                        <p>figma app design of an app called Premia stationery hypothetical</p>
+                        <a href="https://www.behance.net/gallery/221714177/Premia-luxury-pens-and-watches-case-study" target="_blank" style="color: #4CAF50; text-decoration: none;">View Live</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT CARD 4 -->
+                <div class="project-card animate-slideInLeft">
+                    <div class="project-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Minimal WordPress Design">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Minimal wordpress design</h3>
+                        <p>A wordpress project inspired by classic books — simplicity on the outside, rich storytelling within.</p>
+                        <a href="https://soorajuxui.wordpress.com/" target="_blank" style="color: #4CAF50; text-decoration: none;">View Live</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="animate-bounceIn">
+            <h2>Get In Touch</h2>
+            <p>I am currently open to new opportunities and collaborations. Feel free to reach out!</p>
+            <form action="#" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <address>
+                Email: <a href="mailto:diya_sooraj22@outlook.com" style="color: #4CAF50;">email</a><br>
+                LinkedIn: <a href="https://www.linkedin.com/in/k-s-sooraj-39aa17249" target="_blank" style="color: #4CAF50;">K S Sooraj</a>
+            </address>
+        </section>
+
+    </main>
+
+    <footer class="animate-fadeInUp">
+        <p>&copy; 2024 [K S Sooraj]. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Modern JavaScript: Typing effect for hero title
+        const heroTitle = document.querySelector('.hero h1');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        // Start typing after a short delay
+        setTimeout(typeWriter, 500);
+
+        // Form validation
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! (This is a demo form)');
+            form.reset();
+        });
+
+        // Scroll-triggered animations using Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight, .animate-zoomIn, .animate-bounceIn').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
