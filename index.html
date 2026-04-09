@@ -274,7 +274,7 @@
 
         header {
             background-color: var(--bg-secondary);
-            padding: 20px 5%;
+            padding: 15px 5%;
             border-bottom: 1px solid var(--border-color);
             position: fixed;
             width: 100%;
@@ -285,12 +285,15 @@
             justify-content: space-between;
             align-items: center;
             flex-direction: row;
+            box-sizing: border-box;
         }
 
         header h1 {
             margin: 0;
+            padding: 0;
             font-size: 1.8rem;
             order: -1;
+            white-space: nowrap;
         }
 
         nav {
@@ -300,15 +303,46 @@
             order: 1;
         }
 
+        /* Hamburger Menu Button */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            gap: 5px;
+            order: 2;
+        }
+
+        .hamburger-btn span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         main {
-            padding: 40px 5%;
+            padding: 100px 5% 40px 5%;
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 100px; /* Account for fixed header */
         }
 
         section {
-            margin-bottom: 60px;
+            margin: 0 0 60px 0;
         }
 
         section:nth-child(1) { /* about */ }
@@ -581,33 +615,59 @@
         @media (max-width: 768px) {
             /* Header */
             header {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 15px;
                 padding: 15px 5%;
+                justify-content: space-between;
+                align-items: center;
             }
 
             header h1 {
                 font-size: 1.5rem;
                 order: 0;
+                margin: 0;
+            }
+
+            .hamburger-btn {
+                display: flex;
             }
 
             nav {
+                position: absolute;
+                top: 55px;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-secondary);
                 flex-direction: column;
-                gap: 10px;
+                gap: 0;
                 width: 100%;
                 order: 0;
+                padding: 15px 5%;
+                border-bottom: 1px solid var(--border-color);
+                border-top: 1px solid var(--border-color);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+                box-sizing: border-box;
+            }
+
+            nav.active {
+                max-height: 400px;
+                padding: 15px 5%;
             }
 
             nav a {
                 font-size: 1rem;
-                display: inline-block;
-                margin-bottom: 10px;
+                display: block;
+                padding: 8px 0;
+                margin: 0;
             }
 
             /* Hero Section */
             .hero {
                 height: 80vh;
                 background-attachment: scroll;
+                margin-top: 0;
             }
 
             .hero h1 {
@@ -635,12 +695,11 @@
 
             /* Main Content */
             main {
-                padding-top: 150px;
-                padding: 20px 5%;
+                padding: 100px 5% 40px 5%;
             }
 
             section {
-                margin-bottom: 40px;
+                margin: 0 0 40px 0;
             }
 
             section h2 {
@@ -747,15 +806,41 @@
 
             header h1 {
                 font-size: 1.2rem;
+                order: 0;
+            }
+
+            .hamburger-btn {
+                display: flex;
             }
 
             nav {
-                gap: 5px;
+                position: absolute;
+                top: 48px;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+                padding: 12px 4%;
+                border-bottom: 1px solid var(--border-color);
+                border-top: 1px solid var(--border-color);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+                box-sizing: border-box;
+            }
+
+            nav.active {
+                max-height: 300px;
+                padding: 12px 4%;
             }
 
             nav a {
                 font-size: 0.9rem;
-                margin-bottom: 8px;
+                margin: 0;
+                padding: 6px 0;
+                display: block;
             }
 
             /* Hero Section */
@@ -792,12 +877,11 @@
 
             /* Main Content */
             main {
-                padding: 15px 4%;
-                padding-top: 120px;
+                padding: 80px 4% 15px 4%;
             }
 
             section {
-                margin-bottom: 30px;
+                margin: 0 0 30px 0;
             }
 
             section h2 {
@@ -919,6 +1003,7 @@
 <body>
 
     <header>
+        <h1>K S Sooraj</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -926,7 +1011,11 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <h1>K S Sooraj</h1>
+        <button class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
     <!-- HERO SECTION -->
@@ -1085,6 +1174,23 @@
     </footer>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const nav = document.querySelector('nav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
         // Modern JavaScript: Typing effect for hero title
         const heroTitle = document.querySelector('.hero h1');
         const text = heroTitle.textContent;
