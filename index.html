@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Portfolio | [Your Name]</title>
+    <meta name="description" content="Sooraj - UI/UX Designer Portfolio showcasing creative designs and user experience solutions">
+    <title>Sooraj - UI/UX Designer</title>
     <style>
         /* --- THEME COLORS --- */
         :root {
@@ -554,6 +555,55 @@
             box-shadow: 0 5px 15px var(--shadow-color);
         }
 
+        /* --- RESUME SECTION --- */
+        .resume-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid var(--accent-secondary);
+            border-radius: 12px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .resume-section h2 {
+            margin-top: 0;
+            font-size: 2.2rem;
+            color: var(--accent-secondary);
+            margin-bottom: 15px;
+        }
+
+        .resume-section p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .resume-download-btn {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: var(--text-accent);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .resume-download-btn:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        .resume-download-btn::before {
+            content: '📄 ';
+            margin-right: 8px;
+        }
+
         /* Contact Form */
         .contact-form {
             max-width: 640px;
@@ -1042,6 +1092,7 @@
             <a href="#skills">Skills</a>
             <a href="#achievements">Achievements</a>
             <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="hamburger-btn" id="hamburgerBtn">
@@ -1057,8 +1108,8 @@
             <source src="https://videos.pexels.com/videos/856034/download/pexels-artem-podrez-856034.mp4?auto=compress&cs=tinysrgb&dpr=2&h=720&w=1280" type="video/mp4">
         </video>
         <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Discover my journey in modern web development, featuring cutting-edge technologies and innovative solutions.</p>
+            <h1>UI/UX Designer & Frontend Developer</h1>
+            <p>I craft clean, minimalist, and intuitive digital experiences that blend beautiful design with smooth functionality.</p>
             <a href="#about" class="cta-button">Explore My Work</a>
         </div>
     </section>
@@ -1118,6 +1169,13 @@
                     <p>has own technical writing blog and literature blog</p>
                 </div>
             </div>
+        </section>
+
+        <!-- RESUME/CV SECTION -->
+        <section id="resume" class="resume-section animate-fadeInUp">
+            <h2>Resume / CV</h2>
+            <p>Download my comprehensive resume to learn more about my professional experience, skills, and qualifications in UI/UX Design and Frontend Development.</p>
+            <a href="K S Sooraj CV graphic and UI UX.pdf" download class="resume-download-btn">Download Resume</a>
         </section>
 
         <!-- PROJECTS SECTION -->
@@ -1206,7 +1264,7 @@
     </main>
 
     <footer class="animate-fadeInUp">
-        <p>&copy; 2026 K S Sooraj. All rights reserved.</p>
+        <p>&copy; 2024 [K S Sooraj]. All rights reserved.</p>
     </footer>
 
     <script>
